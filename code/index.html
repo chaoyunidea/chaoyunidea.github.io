@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <title></title>
+</head>
+<body style="background: #ececec">
+    <div class="header">
+        <div class="header-content">
+            <img src="../img/logo.png"/>
+            <ul>
+                <li><a href="../index.html">首 页</a></li>
+                <li><a href="../daily/index.html">日 志</a></li>
+                <li class="current"><a href="javascript:">代 码</a></li>
+                <li><a href="../about/index.html">关 于</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="code-contain">
+        <div class="code-title">
+            <ul id="ul">
+
+            </ul>
+        </div>
+        <div class="code-list" id="code-list">
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="all-right">
+            <p>©chaoyunidea.github.io &nbsp Design by calvin &nbsp  QQ:595610145 &nbsp  E-mail:chaoyunidea@sina.com</p>
+          </div>
+    </div>
+    <script src="../js/perfect.move.js"></script>
+    <script type="application/javascript">
+        var oHead = document.getElementsByClassName('header')[0];
+        var aLi = oHead.getElementsByTagName('li');
+        var oCur = document.getElementsByClassName('current')[0];
+
+        oCur.style.left = aLi[0].offsetLeft + 'px';
+
+        for(i = 0;i < aLi.length;i++){
+            aLi[i].onclick = function(){
+                for(i = 0;i < aLi.length;i++){
+                    aLi[i].className = '';
+                }
+                this.className = 'current';
+            }
+        }
+
+        //json数据导入
+        var str1='',str2='',
+            data = [
+               [
+                   {title : '1. 表单常用代码'},
+                   {url : '../slide/1/index.html',title : '去除字符串左右的空格'},
+                   {url : '../slide/2/index.html',title : '验证用户是否输入'},
+                   {url : '../slide/3/index.html',title : '禁止用户输入'},
+                   {url : '../slide/4/index.html',title : '关闭用户中文输入法'},
+                   {url : '../slide/5/index.html',title : '禁止用户复制和粘贴'},
+                   {url : '../slide/6/index.html',title : '限制只能输入数字'},
+                   {url : '../slide/7/index.html',title : '限制字符串长度'},
+                   {url : '../slide/8/index.html',title : '仿微博提示可输入剩余字数'},
+                   {url : '../slide/9/index.html',title : '换行文本自动滚动'},
+                   {url : '../slide/10/index.html',title : 'Ctrl + Return提交表单'},
+                   {url : '../slide/11/index.html',title : '文本内容进行关键字过滤'},
+                   {url : '../slide/12/index.html',title : '全选反选少选复选框'},
+                   {url : '../slide/13/index.html',title : '动态操作下拉选项'},
+                   {url : '../slide/14/index.html',title : '级联菜单'},
+                   {url : '../slide/15/index.html',title : '可添加的下拉选项'}
+               ],
+               [
+                   {title : '2. 常用图片相关代码'},
+                   {url : 'slide/16/index.html',title : '可添加的下拉选项'},
+                   {url : 'slide/17/index.html',title : '图片放大镜效果'},
+                   {url : 'slide/18/index.html',title : '点击图片逐渐放大'}
+               ],
+               [
+                   {title : '3. 内容展示常用代码'},
+                   {url : 'slide/19/index.html',title : '单元行上鼠标悬停提示'},
+                   {url : 'slide/20/index.html',title : '隔行换色鼠标经过换色'},
+                   {url : 'slide/21/index.html',title : '添加或删除表格行'},
+                   {url : 'slide/22/index.html',title : '可拖动的弹出层'},
+                   {url : 'slide/23/index.html',title : '选项卡轮播'}
+               ],
+               [
+                   {title : '4. 常用图片轮换'},
+                   {url : 'slide/24/index.html',title : '百度爱玩 - 图片轮换'},
+                   {url : 'slide/25/index.html',title : '百度爱玩 - 遮罩下拉'},
+                   {url : 'slide/26/index.html',title : '百度爱玩 - 榜单tab切换'},
+                   {url : 'slide/27/index.html',title : 'css3弹出层'},
+                   {url : 'slide/28/index.html',title : '米4-活动页面'},
+                   {url : 'slide/29/index.html',title : '百度爱玩 - 图片轮换'},
+                   {url : 'slide/1/index.html',title : '百度爱玩 - 遮罩下拉'},
+                   {url : 'slide/1/index.html',title : '百度微购－中秋送好礼'},
+                   {url : 'slide/1/index.html',title : '商品分类'},
+                   {url : 'slide/1/index.html',title : '渐显的tab菜单2'},
+                   {url : 'slide/1/index.html',title : '经典图片轮换－单个滚动'},
+                   {url : 'slide/1/index.html',title : '经典图片轮换－整个翻页'}
+               ],
+               [
+                   {title : '5. 移动端效果'},
+                   {url : 'slide/1/index.html',title : '选项卡切换'}
+               ]
+            ];
+
+        for(var i = 0;i < data.length;i++){
+            var item = data[i];
+            for(var j = 0;j < item.length;j++){
+                var son = item[j];
+                if(j == 0){
+                    str1 += '<li><h1>' + son.title + '</h1></li>';
+
+                }else if(j == 1){
+                    str2 += '<dl><dd><a href="' + son.url + '">' + son.title +'</a></dd>';
+                }else{
+                    str2 += '<dd><a href="' + son.url + '">' + son.title +'</a></dd>';
+                };
+                if(j == item.length - 1){
+                    str2 += '</dl>';
+                };
+
+            };
+        };
+
+
+
+        var oUl = document.getElementById('ul');
+        var oList = document.getElementById('code-list');
+        oUl.innerHTML = str1;
+        oList.innerHTML = str2;
+        var aTitle = oUl.getElementsByTagName('h1');
+        var aDl = document.getElementsByTagName('dl');
+        var tmp = -1;
+        var open = false;
+
+        for(var i = 0;i < aTitle.length;i++){
+            aTitle[i].index  = i;
+            aTitle[i].onclick = function(){
+                for(var j = 0;j < aDl.length;j++){
+                    aTitle[j].className = '';
+                }
+
+                for(var k = 0;k < aDl.length;k++){
+                    aDl[k].style.display = 'none';
+                }
+                if(tmp == this.index && open){
+                    aDl[this.index].style.display = 'none';
+                    this.className = '';
+                    open = false;
+                }else{
+                    aDl[this.index].style.display = 'block';
+                    this.className = 'active';
+                    open = true;
+                }
+
+                tmp = this.index;
+
+
+            }
+        }
+
+
+    </script>
+</body>
+</html>

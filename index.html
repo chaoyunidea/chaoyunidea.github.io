@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <title></title>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="img/logo.png"/>
+            <ul>
+                <li class="current"><a href="javascript:">首 页</a></li>
+                <li><a href="daily/index.html">日 志</a></li>
+                <li><a href="code/index.html">代 码</a></li>
+                <li><a href="about/index.html">关 于</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner-sign">
+            <div class="hello">
+                Hello!
+            </div>
+            <span class="sign-content">
+                <h1>我是巢赟，专注web前端开发、UI设计。专注、专业。</h1>
+                <p>hello! welcome to calvin's home！</p>
+            </span>
+        </div>
+    </div>
+    <div class="contain">
+        <ul>
+            <li class="code">
+                <a>
+                    <span><img src="img/icon1.png"/></span>
+                    <p>前端代码</p>
+                </a>
+            </li>
+            <li class="ui">
+                <a>
+                    <span><img src="img/icon2.png"/></span>
+                    <p>UI设计</p>
+                </a>
+            </li>
+            <li class="graphic">
+                <a>
+                    <span><img src="img/icon3.png"/></span>
+                    <p>平面设计</p>
+                </a>
+            </li>
+            <li class="other">
+                <a>
+                    <span><img src="img/icon4.png"/></span>
+                    <p>其他内容</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <div class="all-right">
+            <p>©chaoyunidea.github.io &nbsp Design by calvin &nbsp  QQ:595610145 &nbsp  E-mail:chaoyunidea@sina.com</p>
+          </div>
+    </div>
+    <script src="js/perfect.move.js"></script>
+    <script type="application/javascript">
+        var oHead = document.getElementsByClassName('header')[0];
+        var aLi = oHead.getElementsByTagName('li');
+
+        for(i = 0;i < aLi.length;i++){
+            aLi[i].onclick = function(){
+                for(i = 0;i < aLi.length;i++){
+                    aLi[i].className = '';
+                }
+                this.className = 'current';
+            }
+        }
+
+    </script>
+</body>
+</html>

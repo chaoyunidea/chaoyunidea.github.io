@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <title></title>
+</head>
+<body style="background: #ececec">
+    <div class="header">
+        <div class="header-content">
+            <img src="../img/logo.png"/>
+            <ul>
+                <li><a href="../index.html">首 页</a></li>
+                <li><a href="../daily/index.html">日 志</a></li>
+                <li><a href="../code/index.html">代 码</a></li>
+                <li class="current"><a>关 于</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="about-contain" title="about-me" id="about-me">
+        <div class="about-title">
+            <h1>关于我</h1>
+        </div>
+        <div class="about-body">
+            <p>hi!我是calvin!</p>
+            <p>小名阿赟，喜欢篮球，美女，发呆。</p>
+            <p>宅男一枚，会做设计的前端工程师。</p>
+            <p>这里是一个大杂烩，融合了生活种种，这是我的家。</p>
+            <p>坐标长沙，有空喝茶。</p>
+            <p>QQ:595610145</p>
+            <p>Emai:chaoyunidea@sina.com</p>
+            <p>微博：<a href="http://weibo.com/chaoyunidea" target="_blank">http://weibo.com/chaoyunidea</a></p>
+        </div>
+    </div>
+
+    <div class="comment">
+        <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="about-me" data-title="about-me" data-url="http://chaoyunidea.github.io/about/"></div>
+        <!-- 多说评论框 end -->
+    </div>
+
+
+    <div class="footer">
+        <div class="all-right">
+            <p>©chaoyunidea.github.io &nbsp Design by calvin &nbsp  QQ:595610145 &nbsp  E-mail:chaoyunidea@sina.com</p>
+          </div>
+    </div>
+
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"chaoyunidea"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+    <script src="../js/perfect.move.js"></script>
+    <script type="application/javascript">
+        var oHead = document.getElementsByClassName('header')[0];
+        var aLi = oHead.getElementsByTagName('li');
+
+        for(i = 0;i < aLi.length;i++){
+            aLi[i].onclick = function(){
+                for(i = 0;i < aLi.length;i++){
+                    aLi[i].className = '';
+                }
+                this.className = 'current';
+            }
+        }
+
+    </script>
+</body>
+</html>
