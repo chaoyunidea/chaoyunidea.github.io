@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>透明度变化</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div{
+            margin:30px auto;
+            position:relative;
+            width:350px;
+        }
+
+        #div .small{
+            position:absolute;
+            height:350px;
+            width:350px;
+        }
+
+        #div .small .layer{
+            height:100px;
+            width:100px;
+            background-color:#fff;
+            opacity:0.3;
+            filter:alpha(opacity=30);
+            position:absolute;
+            left:0;
+            top:0;
+            display:none;
+        }
+
+        #div .small .mark{
+            width:100%;
+            height:100%;
+            position:absolute;
+        }
+
+        #div .big{
+            height:230px;
+            width:230px;
+            position:absolute;
+            top:0;
+            left:370px;
+            overflow:hidden;
+            display:none;
+        }
+
+        #div .big img{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <div class="small">
+            <span class="layer"></span>
+            <span class="mark"></span>
+            <img src="img/photo.jpg" alt="小图"/>
+        </div>
+        <div class="big">
+            <img src="img/big.jpg" alt="放大图"/>
+        </div>
+    </div>
+    <script>
+        var div = document.getElementById('div');
+        var oSmall = getClass(document,'small')[0];
+        var oBig = getClass(document,'big')[0];
+        var layer = getClass(oSmall,'layer')[0];
+        var img = oBig.getElementsByTagName('img')[0];
+
+        function getClass(obj,cls){
+            if(obj.getElementsByClassName){
+                return obj.getElementsByClassName(cls);
+            }else{
+                var aEl = obj.getElementsByTagName('*');
+                var aResult = [];
+
+                for(var i = 0;i < aEl.length;i++){
+                    if(aEl[i].className == cls){
+                        aResult.push(aEl[i]);
+                    }
+                }
+
+                return aResult;
+            }
+        }
+
+        function follow(e){
+            e = e || event;
+            oSmall.style.cursor = 'move';
+            layer.style.display = oBig.style.display = 'block';
+            var l = e.clientX - div.offsetLeft - layer.offsetWidth/2;
+            var t = e.clientY - div.offsetTop - layer.offsetHeight/2;
+            if(l < 0){
+                l = 0;
+            }else if(l > oSmall.offsetWidth - layer.offsetWidth){
+                l = oSmall.offsetWidth - layer.offsetWidth;
+
+            }
+
+            if(t < 0){
+                t = 0;
+            }else if(t > oSmall.offsetHeight - layer.offsetHeight){
+                t = oSmall.offsetHeight - layer.offsetHeight;
+            }
+
+            layer.style.left = l + 'px';
+            layer.style.top = t + 'px';
+
+            var scaleX = img.clientWidth / oSmall.clientWidth;
+            var scaleY = img.clientHeight / oSmall.clientHeight;
+
+            img.style.left = -scaleX * l + 'px';
+            img.style.top = -scaleY * t + 'px';
+        }
+
+        oSmall.onmousemove = function(e){
+            follow(e);
+        }
+
+        oSmall.onmouseout = function(){
+            layer.style.display = oBig.style.display = 'none';
+        }
+
+    </script>
+
+</body>
+</html>

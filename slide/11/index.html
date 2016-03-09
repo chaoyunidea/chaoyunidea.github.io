@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仅限数字</title>
+    <style>
+        textarea,button{
+            display:block;
+            margin:20px;
+        }
+
+        .top{
+            vertical-align:top;
+        }
+
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <textarea rows="10" cols="47" placeholder="AV | 党 | 美女" id="before"></textarea>
+    <button id="btn">过滤</button>
+    <textarea rows="10" cols="47" id="after"></textarea>
+    <script>
+        var key = /AV|党|美女/g;
+        var oBe = document.getElementById('before');
+        var oAf = document.getElementById('after');
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function(){
+            oAf.value = oBe.value.replace(key,function(str){
+                var r = '';
+                for(var i = 0;i < str.length;i++){
+                    r += '*';
+                }
+                return r;
+            });
+            return false;
+        }
+
+
+    </script>
+</body>
+</html>

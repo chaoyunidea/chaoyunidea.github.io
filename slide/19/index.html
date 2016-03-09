@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>单元行上鼠标悬停</title>
+    <style>
+        .edit{
+            margin-top:20px;
+        }
+
+        table,table tr td,table tr th{
+            border:1px solid #252525;
+            border-collapse:collapse;
+            padding:2px;
+            cursor:pointer;
+            text-align:center;
+        }
+
+        table{
+            margin-top:20px;
+        }
+
+        table tr.even td{
+            background:#fda93f;
+        }
+
+        table tr.hover td{
+            background:#ccc;
+        }
+
+        table tr.on td{
+            background:powderblue;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="edit">
+        <input type="text" id="val"/>
+        <button id="add">add</button>
+        <button>delete</button>
+    </div>
+    <table>
+        <tr>
+            <th>表头内容</th>
+            <th>表头内容</th>
+            <th>表头内容</th>
+        </tr>
+        <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>表格内容</td>
+        </tr>
+        <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>表格内容</td>
+        </tr>
+        <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>表格内容</td>
+        </tr>
+        <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>表格内容</td>
+        </tr>
+        <tr>
+            <td>表格内容</td>
+            <td>表格内容</td>
+            <td>表格内容</td>
+        </tr>
+
+    </table>
+    <script>
+        var aTr = document.getElementsByTagName('tr');
+        var tab = document.getElementsByTagName('table')[0];
+        var tmp = '';
+        var str = '';
+        var k = 0;
+        var add = document.getElementById('add');
+        var oVal = document.getElementById('val');
+
+
+        function create(val){
+            var oTr = document.createElement('tr');
+            str = '<td>' + val + '</td><td>基本内容</td><td><a class="del">del</a></td>';
+            oTr.innerHTML = str;
+            tab.appendChild(oTr);
+        }
+
+
+
+
+        add.onclick = function(){
+            create(oVal.value);
+            tableBg();
+            del();
+        }
+
+        function del(){
+            var oDel = document.getElementsByClassName('del');
+            for(i = 0;i < oDel.length;i++){
+                oDel[i].onclick = function(){
+                    tab.removeChild(this.parentNode.parentNode);
+                }
+            }
+        }
+
+
+
+        tableBg();
+        function tableBg(){
+            for(var i = 0;i < aTr.length;i++){
+                if(i % 2 == 0){
+                    aTr[i].className = 'even';
+                }
+                if(i > 0){
+                    aTr[i].index = i;
+                    aTr[i].onmouseover = function(){
+                        if(this.index == k || this.className.search(/on/) != -1){
+                            return;
+                        }
+                        tmp = this.className;
+                        this.className = 'hover';
+                    }
+
+                    aTr[i].onmouseout = function(){
+                        if(this.index == k || this.className.search(/on/) != -1){
+                            return;
+                        }
+                        this.className = tmp;
+                    }
+                    /*
+                    aTr[i].onclick = function(){
+                        k = this.index;
+                        if(!+this.getAttribute('data-on')){
+                            this.className = 'on';
+                            this.setAttribute('data-on',1);
+
+                        }else{
+                            if(this.index % 2 == 0){
+                                this.className = 'even';
+                                console.log('1');
+                            }
+                            this.className = this.className.replace(/on/g,'');
+                            this.setAttribute('data-on',0);
+
+                        }
+                    }
+                    */
+                }
+
+            }
+        }
+
+    </script>
+
+
+
+</body>
+</html>

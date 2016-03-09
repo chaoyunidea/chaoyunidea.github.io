@@ -59,31 +59,27 @@
                    {url : '../slide/1/index.html',title : '去除字符串左右的空格'},
                    {url : '../slide/2/index.html',title : '验证用户是否输入'},
                    {url : '../slide/3/index.html',title : '禁止用户输入'},
-                   {url : '../slide/4/index.html',title : '关闭用户中文输入法'},
                    {url : '../slide/5/index.html',title : '禁止用户复制和粘贴'},
                    {url : '../slide/6/index.html',title : '限制只能输入数字'},
-                   {url : '../slide/7/index.html',title : '限制字符串长度'},
                    {url : '../slide/8/index.html',title : '仿微博提示可输入剩余字数'},
                    {url : '../slide/9/index.html',title : '换行文本自动滚动'},
                    {url : '../slide/10/index.html',title : 'Ctrl + Return提交表单'},
                    {url : '../slide/11/index.html',title : '文本内容进行关键字过滤'},
                    {url : '../slide/12/index.html',title : '全选反选少选复选框'},
                    {url : '../slide/13/index.html',title : '动态操作下拉选项'},
-                   {url : '../slide/14/index.html',title : '级联菜单'},
-                   {url : '../slide/15/index.html',title : '可添加的下拉选项'}
                ],
                [
                    {title : '2. 常用图片相关代码'},
-                   {url : 'slide/16/index.html',title : '可添加的下拉选项'},
-                   {url : 'slide/17/index.html',title : '图片放大镜效果'},
-                   {url : 'slide/18/index.html',title : '点击图片逐渐放大'}
+                   {url : 'slide/14/index.html',title : '可添加的下拉选项'},
+                   {url : 'slide/15/index.html',title : '图片放大镜效果'},
+                   {url : 'slide/16/index.html',title : '点击图片逐渐放大'}
                ],
                [
                    {title : '3. 内容展示常用代码'},
-                   {url : 'slide/19/index.html',title : '单元行上鼠标悬停提示'},
-                   {url : 'slide/20/index.html',title : '隔行换色鼠标经过换色'},
-                   {url : 'slide/21/index.html',title : '添加或删除表格行'},
-                   {url : 'slide/22/index.html',title : '可拖动的弹出层'},
+                   {url : 'slide/17/index.html',title : '单元行上鼠标悬停提示'},
+                   {url : 'slide/18/index.html',title : '隔行换色鼠标经过换色'},
+                   {url : 'slide/19/index.html',title : '添加或删除表格行'},
+                   {url : 'slide/20/index.html',title : '可拖动的弹出层'},
                    {url : 'slide/23/index.html',title : '选项卡轮播'}
                ],
                [
@@ -115,9 +111,9 @@
                     str1 += '<li><h1>' + son.title + '</h1></li>';
 
                 }else if(j == 1){
-                    str2 += '<dl><dd><a href="' + son.url + '">' + son.title +'</a></dd>';
+                    str2 += '<dl><dd><a href="' + son.url + '" target="_blank">' + son.title +'</a></dd>';
                 }else{
-                    str2 += '<dd><a href="' + son.url + '">' + son.title +'</a></dd>';
+                    str2 += '<dd><a href="' + son.url + '" target="_blank">' + son.title +'</a></dd>';
                 };
                 if(j == item.length - 1){
                     str2 += '</dl>';

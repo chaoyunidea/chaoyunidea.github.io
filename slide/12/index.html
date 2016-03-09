@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仅限数字</title>
+    <style>
+        .space{
+            margin:20px;
+        }
+        *{
+            font-size:14px;
+        }
+        h1{
+            display:inline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="space"><input type="checkbox" id="all-check"/><h1>全选反选</h1></div>
+        <div class="space"><input type="checkbox"/>选项（一）</div>
+        <div class="space"><input type="checkbox"/>选项（二）</div>
+        <div class="space"><input type="checkbox"/>选项（三）</div>
+        <div class="space"><input type="checkbox"/>选项（四）</div>
+        <div class="space"><input type="checkbox"/>选项（五）</div>
+        <div class="space"><input type="checkbox"/>选项（六）</div>
+        <div class="space"><input type="checkbox"/>选项（七）</div>
+        <div class="space"><input type="checkbox"/>选项（八）</div>
+        <div class="space"><input type="checkbox"/>选项（九）</div>
+        <div class="space"><input type="checkbox"/>选项（十）</div>
+    </div>
+    <script>
+        var aInt = document.getElementsByTagName('input');
+        var allChk = document.getElementById('all-check');
+
+        allChk.onclick = function(){
+            if(this.checked == true){
+                for(var i = 1;i < aInt.length;i++){
+                    aInt[i].checked = true;
+
+                }
+            }else{
+                for(var i = 1;i < aInt.length;i++){
+                    aInt[i].checked = false;
+
+                }
+            }
+            console.log(1);
+        }
+    </script>
+</body>
+</html>

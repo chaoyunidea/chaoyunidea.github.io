@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仅限数字</title>
+    <style>
+        .space{
+            margin:20px;
+        }
+
+        .top{
+            vertical-align:top;
+        }
+
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="space">
+        <span>账号</span>
+        <input type="text"/>
+    </div>
+    <div class="space">
+        <span>密码</span>
+        <input type="password"/>
+    </div>
+
+    <button id="btn">提交</button>
+
+    <script>
+        var oBtn = document.getElementById('btn');
+
+        document.onkeydown = function(e){
+            var oE = e || window.event;
+            if(oE.ctrlKey && oE.keyCode == 13){
+                oBtn.onclick();
+            }
+
+        }
+
+
+        oBtn.onclick = function(){
+            alert('submit success!');
+        }
+
+    </script>
+
+</body>
+</html>

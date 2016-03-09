@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仅限数字</title>
+    <style>
+        #opt{
+            margin:20px 0;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+   <input type="text" id="int" />
+   <button id="add">添加</button>
+   <button  id="del">删除</button>
+   <select id="opt">
+       <option>中国人</option>
+       <option>日本人</option>
+       <option>韩国人</option>
+   </select>
+   <script>
+       var oInt = document.getElementById('int'),
+        oAdd = document.getElementById('add'),
+        oDel = document.getElementById('del'),
+        opt = document.getElementById('opt');
+
+       function addOpt(){
+           if(oInt.value.length < 1){
+               alert('输入不能为空');
+               return false;
+           }
+           var o = document.createElement('option');
+           o.innerHTML = oInt.value;
+           opt.appendChild(o);
+       }
+
+       function removeOpt(){
+           var index = opt.selectedIndex;
+           opt.removeChild(opt.options[index]);
+       }
+
+
+       oAdd.onclick = function(){
+           addOpt();
+       }
+
+       oDel.onclick = function(){
+           removeOpt();
+       }
+   </script>
+</body>
+</html>

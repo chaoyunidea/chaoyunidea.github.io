@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>透明度变化</title>
+
+</head>
+<body>
+   <img src="img/photo.jpg" />
+
+
+   <script>
+       var oImg = document.getElementsByTagName('img')[0];
+
+       function getStyle(obj,attr){
+           if(obj.currentStyle){
+               return obj.currentStyle[attr];
+           }else{
+               return getComputedStyle(obj,false)[attr];
+           }
+       }
+
+       function move(obj,attr,target){
+           clearInterval(obj.timer);
+           obj.timer = setInterval(
+                function(){
+                    if(attr == 'opacity'){
+                        var oCur = getStyle(obj,attr)*100;
+                    }else{
+                        var oCur = getStyle(obj,attr);
+                    }
+
+
+                    var speed = (target - oCur) / 6;
+
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    oCur += speed;
+                    if(attr == 'opacity'){
+                        obj.style[attr] = oCur/100;
+                        obj.style.filter = 'alpha(opacity:' + oCur + ')';
+                    }else{
+                        obj.style[attr] = oCur;
+                    }
+
+                    if(target == oCur){
+                        clearInterval(obj.timer);
+                    }
+                }
+           ,30);
+       }
+
+       oImg.onmouseover = function(){
+           move(this,'opacity',30);
+       }
+
+       oImg.onmouseout = function(){
+           move(this,'opacity',100);
+       }
+   </script>
+
+
+</body>
+</html>

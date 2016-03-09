@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仿微博</title>
+    <style>
+        .title{
+            font-weight:bold;
+            font-size:20px;
+        }
+
+        .vis{
+            height:130px;
+            overflow:hidden;
+            position:relative;
+        }
+
+        #ul{
+            position:absolute;
+            top:0;
+            margin:0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1 class="title">文本框中的文字滚动</h1>
+    <div class="vis">
+        <ul id="ul">
+            <li>百日依山尽，黄河入海流。</li>
+            <li>欲穷千里目，更上一层楼。</li>
+            <li>千里江陵一日还，日照香炉生紫烟。</li>
+            <li>不知庐山真面目，只缘生在此山中。</li>
+            <li>野火烧不尽，春风吹又生。</li>
+            <li>离离原上草，一岁一枯荣。</li>
+            <li>两个黄鹂鸣翠柳，一行白鹭上青天。</li>
+            <li>停车坐爱枫林晚，霜叶红于二月花。</li>
+        </ul>
+
+    </div>
+
+
+
+    <script>
+        var oUl = document.getElementById('ul');
+        var aLi = document.getElementsByTagName('li');
+        var target = 0;
+
+        oUl.innerHTML += oUl.innerHTML;
+
+        function move(obj,attr){
+
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur = parseInt(getStyle(obj,attr));
+                var speed = (target - cur) / 8;
+                var stop = true;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                oUl.style[attr] = cur + speed + 'px';
+                console.log(speed);
+
+                if(target != cur){
+                    stop = false;
+                }
+
+                if(stop){
+                    clearInterval(obj.timer);
+                }
+
+            },20)
+
+        }
+
+        function getStyle(obj,attr){
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            }else{
+                return getComputedStyle(obj,null)[attr];
+            }
+        }
+
+        setInterval(function(){
+          if(oUl.offsetTop < -oUl.offsetHeight / 2){
+              oUl.style.top = 0;
+              target = -22;
+          }else{
+              target += (-22);
+          }
+             move(oUl,'top');
+        }
+                ,1000);
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仿微博</title>
+    <style>
+        .space{
+            margin:20px;
+        }
+
+        .top{
+            vertical-align:top;
+        }
+
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="space" >
+        <span class="top">备注</span>
+        <textarea rows="10" cols="47" id="txt"></textarea>
+    </div>
+    <div class="space">
+        <p id="content">您还可以输入<b id="no">150</b>个字</p>
+    </div>
+    <div class="space">
+        <button id="btn">提交</button>
+    </div>
+
+
+    <script>
+        var oTxt = document.getElementById('txt');
+        var oB = document.getElementById('no');
+        var oP = document.getElementById('content');
+
+        oTxt.oninput = function(){
+            if(oTxt.value.length < 151){
+                oB.innerHTML = 150 - (oTxt.value.length);
+            }else{
+                oP.innerHTML = '已超过<b>150</b>字';
+                return false;
+            }
+        }
+
+
+
+    </script>
+
+</body>
+</html>
